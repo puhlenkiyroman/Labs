@@ -11,7 +11,8 @@ int main()
 {
     setlocale(LC_ALL, "Russian");
 
-    double x, N;
+    double x, sum = 0.0;
+    const int n = 10;
     printf("Ввведите значение |x| < 1 : ");
     int count_of_x = scanf_s("%lf", &x);
     if (count_of_x != 1 || x >= 1 ) 
@@ -20,8 +21,11 @@ int main()
         return 0;
     }
     else {}
-    N = 1 /pow((1 + abs(x)),2);
-    cout << "Значение вычисленного ряда равняется " << N;
+    for (int i = 0; i <= n; i++) 
+    {
+        sum += pow(-1,i) * (i + 1) * pow(x,i);
+    }
+    cout << "Значение вычисленного ряда равняется " << sum;
     return 0;
 }
 
