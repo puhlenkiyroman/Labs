@@ -51,7 +51,7 @@ void number_or_not(int* number)
 	do {
 		const int value_n = scanf_s("%d", number);
 		wrong_n = (value_n != 1);
-		getchar();;
+		getchar();
 		if (wrong_n)
 		{
 			printf("You can type only the numbers.");
