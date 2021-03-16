@@ -54,8 +54,8 @@ void number_or_not(int* number)
 		getchar();
 		if (wrong_n)
 		{
-			printf("You can type only the numbers.");
-			printf("Please enter again: ");
+			printf("Вы можете вводить только числа");
+			printf("Пожалуйста введите еще раз");
 		}
 	} while (wrong_n);
 }
