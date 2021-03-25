@@ -1,13 +1,16 @@
-﻿// Lab3_4.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+// Lab3_4.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
 //
 
 #include <stdio.h>
 #include <cmath>
 #include <math.h>
 #include <iostream>
+#include <limits>
+
 using namespace std;
-void number_or_not(int* number);
-int users_filling();
+
+int get_elem();
+
 int main()
 {
 	setlocale(LC_ALL, "Russian");
@@ -15,7 +18,7 @@ int main()
 	for (int i = 0; i < 2; i++) {
 		for (int j = 0; j < 2; j++) {
 
-			array[i][j] = users_filling();
+			array[i][j] = get_elem();
 		}
 	}
 
@@ -45,25 +48,24 @@ int main()
 	return 0;
 }
 
-void number_or_not(int* number)
+int get_elem()
 {
-	int wrong_n = 0;
-	do {
-		const int value_n = scanf_s("%d", number);
-		wrong_n = (value_n != 1);
-		getchar();
-		if (wrong_n)
-		{
-			printf("Вы можете вводить только числа");
-			printf("Пожалуйста введите еще раз");
-		}
-	} while (wrong_n);
-}
+	int elem;
 
-int users_filling()
-{
-	int element = 0;
-	printf("Enter the element of array: ");
-	number_or_not(&element);
-	return element;
+	while (true)
+	{
+		cout << "Enter the element of array: ";
+		cin >> elem;
+		
+		if (cin.fail())
+		{
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(),'\n');
+			cout <<"It's not correct, please write again" << endl;
+		}
+		else
+		{
+			return elem;
+		}
+	}
 }
