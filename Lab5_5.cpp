@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <cstdio>
 #include <cstring>
 
@@ -23,20 +23,41 @@ int main()
 	"Its not always easy to keep yourself busy"
 	};
 
+	int x = 0;
 
-	int number_row = 0;
-	cout << "Enter the row number: ";
-	scanf_s("%d", &number_row);
-	number_row--;
+	while (true)
+	{
+		cout << "How many words u want to decode?\n";
+		cin >> x;
 
-	int number_word = 0;
-	cout << "Enter the word number: ";
-	scanf_s("%d", &number_word);
+		if (cin.fail())
+		{
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cout << "It's not correct, please write again" << endl;
+		}
+		else
+		{
+			return x;
+		}
+	}
 
-	int count_characters = strlen(&poem[number_row][COLS]);
-	char string[COLS];
-	search_string(poem, string, number_row, count_characters);
-	decode(count_characters, number_word, string);
+	for (int i = 0; i <= x; i++)
+	{
+		int number_row = 0;
+		cout << "Enter the row number: ";
+		scanf_s("%d", &number_row);
+		number_row--;
+
+		int number_word = 0;
+		cout << "Enter the word number: ";
+		scanf_s("%d", &number_word);
+
+		int count_characters = strlen(&poem[number_row][COLS]);
+		char string[COLS];
+		search_string(poem, string, number_row, count_characters);
+		decode(count_characters, number_word, string);
+	}
 }
 
 
